@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "./static/css/main.95cfe732.css",
+    "main.js": "./static/js/main.dbcd0755.js",
+    "static/js/453.8460c1fb.chunk.js": "./static/js/453.8460c1fb.chunk.js",
+    "static/media/Helvetica-Bold.woff2": "./static/media/Helvetica-Bold.ab9fbc64132a3eb6b7ac.woff2",
+    "static/media/Helvetica.woff2": "./static/media/Helvetica.fbff4e73a10216586fec.woff2",
+    "static/media/Gilroy-Black.woff": "./static/media/Gilroy-Black.6d21b4f1232ffa35fefe.woff",
+    "index.html": "./index.html",
+    "main.95cfe732.css.map": "./static/css/main.95cfe732.css.map",
+    "main.dbcd0755.js.map": "./static/js/main.dbcd0755.js.map",
+    "453.8460c1fb.chunk.js.map": "./static/js/453.8460c1fb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.95cfe732.css",
+    "static/js/main.dbcd0755.js"
+  ]
+}
