@@ -96,7 +96,19 @@ function Preview({ setUsername, t }) {
       console.error("Error downloading QR code:", error.message);
     }
   };
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, [setUsername]);
 
+  // Username o'zgarganda, uni localStorage'da saqlash
+  useEffect(() => {
+    if (username) {
+      localStorage.setItem("username", username);
+    }
+  }, [username]);
   useEffect(() => {
     const fetchUserData = async () => {
       try {

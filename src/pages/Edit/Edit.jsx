@@ -31,7 +31,7 @@ function ConfirmationModal({ isVisible, onClose, onConfirm, t }) {
     </div>
   );
 }
-function Edit({ t }) {
+function Edit({ t, setUsername }) {
   const [formData, setFormData] = useState({
     username: "",
     full_name: "",
@@ -49,6 +49,19 @@ function Edit({ t }) {
 
   const navigate = useNavigate();
   const { username } = useParams();
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, [setUsername]);
+
+  // Username o'zgarganda, uni localStorage'da saqlash
+  useEffect(() => {
+    if (username) {
+      localStorage.setItem("username", username);
+    }
+  }, [username]);
 
   useEffect(() => {
     const fetchProfileData = async () => {
