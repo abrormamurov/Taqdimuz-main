@@ -4,7 +4,7 @@
   left: 0;
   width: 280px;
   height: 100%;
-  background: var(--#fdfdfd);
+  background: var(--#ffffff);
   font-family: var(--lato);
   transition: 0.3s ease;
   overflow-x: hidden;
@@ -29,7 +29,7 @@
   position: sticky;
   top: 0;
   left: 0;
-  background: var(--#e9e3e3);
+  background: var(--#ffffff);
   z-index: 500;
   padding-bottom: 20px;
   box-sizing: content-box;
@@ -59,7 +59,7 @@
 
 #sidebar .side-menu.top a {
   color: var(--dark);
-  background: #e9e3e3;
+  background: #ffffff;
 }
 
 #sidebar .side-menu.top a li label {
