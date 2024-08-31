@@ -53,10 +53,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh; /* Ekran balandligini 100% qilib o'rnatadi */
+  min-height: 100%; /* Ekran balandligini 100% qilib o'rnatadi */
+  min-height: 100dvh; /* Dynamic Viewport Height - yangi CSS o'lchov */
+  background-color: #ffffff; /* Qora fon muammosini oldini olish uchun oq rang */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+/* Samsung Galaxy S20+ uchun fon rangini oq qilib o'rnatish */
+@media screen and (device-width: 1440px) and (device-height: 3200px) and (-webkit-device-pixel-ratio: 3) {
+  body {
+    background-color: #ffffff; /* Oq fon */
+    color: #000000; /* Qora matn */
+  }
 }

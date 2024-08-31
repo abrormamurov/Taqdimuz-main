@@ -69,7 +69,7 @@ function Home({ t, language, setLanguage }) {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row mt-16 md:mt-0 justify-between items-center text-center md:text-left mb-16 md:mb-24">
+      <div className="flex flex-col md:flex-row  justify-between items-center text-center md:text-left mt-32 md:mt-0 mb-16 md:mb-24">
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
           <h2 className="font-extrabold text-4xl md:text-6xl mt-[-100px] mb-6">
             {t.homeH2}

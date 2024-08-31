@@ -1,5 +1,6 @@
 // TranslationProvider.js
 import React, { createContext, useContext, useState } from "react";
+import { BsTranslate } from "react-icons/bs";
 
 // Tarjima matnlari uchun ob'ekt
 const translations = {
@@ -213,24 +214,11 @@ const TranslationSwitcher = ({ language, setLanguage }) => {
     <div className="language-switcher flex justify-end mt-1 z-10 h-6">
       {/* Mobile Menu Icon */}
       <button
-        className="md:hidden p-2 "
+        className="md:hidden p-3 h-5 bg-white"
         onClick={toggleMenu}
         aria-label="Toggle language menu"
       >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
+        <BsTranslate width={10} hanging={10} className="text-black w-5 h-4" />
       </button>
 
       {/* Language Menu for Mobile */}

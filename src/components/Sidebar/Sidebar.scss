@@ -1,10 +1,10 @@
 #sidebar {
   position: fixed;
-  top: 0;
+  top: 56px;
   left: 0;
   width: 280px;
   height: 100%;
-  background: var(--#ffffff);
+  background: #e7e5f5;
   font-family: var(--lato);
   transition: 0.3s ease;
   overflow-x: hidden;
@@ -16,7 +16,7 @@
 // }
 
 #sidebar.hide {
-  width: 60px;
+  width: 1px;
 }
 
 #sidebar .brand {
@@ -29,7 +29,7 @@
   position: sticky;
   top: 0;
   left: 0;
-  background: var(--#ffffff);
+  background: var(--#cdcaca);
   z-index: 500;
   padding-bottom: 20px;
   box-sizing: content-box;
@@ -59,7 +59,7 @@
 
 #sidebar .side-menu.top a {
   color: var(--dark);
-  background: #ffffff;
+  background: #aeacac;
 }
 
 #sidebar .side-menu.top a li label {
@@ -100,7 +100,7 @@
     color: var(--dark);
     white-space: nowrap;
     overflow: hidden;
-    color: var(--blue);
+    color: #4a90e2;
   }
 
   li {
@@ -179,4 +179,29 @@
   background: white;
   padding: 20px;
   border-radius: 5px;
+}
+#sidebar.show + .main-content {
+  opacity: 0.5; /* Boshqa komponentlarni xira qilish */
+  pointer-events: none; /* Ular bilan o'zaro ta'sirni cheklash */
+  transition: opacity 0.3s ease;
+}
+
+#sidebar.hide + .main-content {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+}
+#sidebar {
+  position: fixed; /* Sidebarni sahifada o'rnatilgan holatda ushlab turish */
+  z-index: 1000; /* Sidebar boshqa elementlardan yuqoriroq bo'lishi uchun yuqori z-index qiymatini beramiz */
+}
+
+.main-content {
+  position: relative;
+  z-index: 1; /* Main contentni sidebar ostida ushlab turish uchun z-index qiymatini pastroq qilib belgilaymiz */
+}
+
+.profile-image-container {
+  position: relative;
+  z-index: 2; /* Profil rasmini sidebar bilan ziddiyatda bo'lmasligi uchun z-indexni biroz yuqoriroq qilib beramiz */
 }

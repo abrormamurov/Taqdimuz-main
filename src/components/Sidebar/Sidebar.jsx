@@ -11,6 +11,12 @@ function Sidebar({ sidebarOpen, t }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!sidebarOpen) {
+      setShowCreateAccount(false);
+    }
+  }, [sidebarOpen]);
+
   const handleLogout = async () => {
     await dispatch(logoutUser());
     navigate("/login");
@@ -85,38 +91,6 @@ function Sidebar({ sidebarOpen, t }) {
             )}
           </li>
         </NavLink>
-        {/* <NavLink to={"/analytics"}>
-          <li>
-            <label>
-              <i className="bx bxs-doughnut-chart"></i>
-              <span className="text">New Profile</span>
-            </label>
-          </li>
-        </NavLink> */}
-        {/* <NavLink to={"/myaccount"}>
-          <li>
-            <label>
-              <i className="bx bxs-message-dots"></i>
-              <span className="text">My Account</span>
-            </label>
-          </li>
-        </NavLink> */}
-        {/* <NavLink to={"/team"}>
-          <li>
-            <label>
-              <i className="bx bxs-group"></i>
-              <span className="text">Team</span>
-            </label>
-          </li>
-        </NavLink> */}
-        {/* <NavLink to={"/settings"}>
-          <li>
-            <label>
-              <i className="bx bxs-cog"></i>
-              <span className="text">Settings</span>
-            </label>
-          </li>
-        </NavLink> */}
         <NavLink>
           <li onClick={handleLogout}>
             <label>

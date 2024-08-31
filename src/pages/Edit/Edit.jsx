@@ -302,13 +302,13 @@ function Edit({ t, setUsername }) {
     setIsModalVisible(false);
   };
   return (
-    <div className="edit-container max-w-sm mx-auto p-4">
+    <div className="edit-container max-w-sm mx-auto  p-4">
       <form
         className="edit-form  flex flex-col gap-6"
         onSubmit={handleSubmit}
         encType="multipart/form-data"
       >
-        <div className="flex items-center ">
+        <div className="flex items-center">
           <div className="relative rounded-full w-44 h-44 overflow-hidden bg-slate-200 flex items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-slate-300 hover:border-4 hover:border-blue-500 mb-5 md:mb-0">
             <div className="relative rounded-full w-44 h-44 overflow-hidden bg-slate-200 flex items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-slate-300 hover:border-4 hover:border-blue-500 mb-5 md:mb-0">
               <div className="relative rounded-full w-44 h-44 overflow-hidden bg-slate-200 flex items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-slate-300 hover:border-4 hover:border-blue-500 mb-5 md:mb-0">
@@ -317,12 +317,12 @@ function Edit({ t, setUsername }) {
                     src={
                       imagePreview ||
                       URL.createObjectURL(formData.profile_image)
-                    } // Preview yoki eski rasm URL
+                    }
                     alt="Profile Preview"
                     className="w-32 h-32 rounded-full object-cover"
                   />
                 ) : (
-                  <div className="w-32 h-32 rounded-full border border-gray-300 flex items-center justify-center pl-4 text-gray-500">
+                  <div className="w-32 h-32 rounded-full border border-gray-300 flex items-center justify-center text-gray-500">
                     <span>{t.NoImage}</span>
                   </div>
                 )}

@@ -31,7 +31,7 @@ function Navbar({
   }, [username]);
 
   return (
-    <nav className="h-14 px-6 flex items-center sticky top-0 left-0 shadow-md z-10">
+    <nav className="h-14 px-6 flex items-center sticky top-0 left-0 bg-white shadow-md z-10">
       <div className="flex items-center">
         <HiMenu className="text-xl cursor-pointer" onClick={handleOpen} />
       </div>
