@@ -106,16 +106,17 @@ function Edit({ t, setUsername }) {
   const [imagePreview, setImagePreview] = useState(null);
 
   useEffect(() => {
-    // API dan rasm URL olish
     const fetchProfileImage = async () => {
       try {
         const response = await axios.get(
           `https://api.taqdim.uz/profile/list/${username}`
         );
-        // API dan olingan rasm URL'ni to'g'ri saqlash
+        console.log("Full API Response:", response.data);
+
+        // `profile_image` maydonini to'g'ri saqlash
         setFormData((prevData) => ({
           ...prevData,
-          profile_image: response.data.imageUrl, // Bu yerda API dan olingan rasm URL'sini to'g'ri saqlang
+          profile_image: response.data.profile_image || "", // `profile_image` maydonidan foydalanish
         }));
       } catch (error) {
         console.error("Error fetching profile image:", error);
@@ -322,16 +323,13 @@ function Edit({ t, setUsername }) {
               <div className="relative rounded-full w-44 h-44 overflow-hidden bg-slate-200 flex items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-slate-300 hover:border-4 hover:border-blue-500 mb-5 md:mb-0">
                 {imagePreview || formData.profile_image ? (
                   <img
-                    src={
-                      imagePreview ||
-                      URL.createObjectURL(formData.profile_image)
-                    }
+                    src={imagePreview || formData.profile_image}
                     alt="Profile Preview"
-                    className="w-32 h-32 rounded-full object-cover"
+                    className="w-44 h-44 rounded-full object-cover"
                   />
                 ) : (
                   <div className="w-32 h-32 rounded-full border border-gray-300 flex items-center justify-center text-gray-500">
-                    <span>{t.NoImage}</span>
+                    <span>No Image</span>
                   </div>
                 )}
 
