@@ -123,7 +123,7 @@ function UserPreview({ setUsername, t }) {
         </div>
         <div className="text-center md:text-left md:ml-6">
           <h1 className="text-3xl font-bold text-gray-800">
-            {userData?.username}
+            {userData?.full_name}
           </h1>
           <a
             className="text-xl text-blue-600 hover:underline flex items-center justify-center md:justify-start mt-2"
