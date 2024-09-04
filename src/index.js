@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { ToastContainer } from "react-toastify";
-import { BrowserRouter } from "react-router-dom"; // Import BrowserRouter
+import { HashRouter as BrowserRouter } from "react-router-dom"; // Import BrowserRouter
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
