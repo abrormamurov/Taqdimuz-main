@@ -148,10 +148,22 @@ function Edit({ t, setUsername }) {
         return;
       }
 
-      setFormData((prevData) => ({
-        ...prevData,
-        pdf: file,
-      }));
+      // Agar yangi fayl yuklangan bo'lsa, eski fayl bilan solishtirib qo'yish kerak
+      setFormData((prevData) => {
+        // Agar eski fayl bo'lsa va yangi yuklanmasa, "pdf" ni o'chirib tashlaymiz
+        if (
+          prevData.pdf &&
+          prevData.pdf.name === file.name &&
+          prevData.pdf.size === file.size
+        ) {
+          return { ...prevData };
+        }
+
+        return {
+          ...prevData,
+          pdf: file,
+        };
+      });
     }
   };
 
@@ -216,16 +228,12 @@ function Edit({ t, setUsername }) {
         formDataToSend.append(key, formDataWithoutQrCode[key]);
       }
 
-      if (formData.profile_image) {
-        formDataToSend.append("profile_image", formData.profile_image);
+      if (profile_image) {
+        formDataToSend.append("profile_image", profile_image);
       }
 
-      if (pdf !== null) {
-        // Fayl o'lchamini tekshirish
-        if (pdf && pdf.size > 20 * 1024 * 1024) {
-          throw new Error("PDF fayli juda katta");
-        }
-
+      // Only append PDF if it is provided and is below the size limit
+      if (pdf && pdf.size <= 20 * 1024 * 1024) {
         formDataToSend.append("pdf", pdf);
       }
 
