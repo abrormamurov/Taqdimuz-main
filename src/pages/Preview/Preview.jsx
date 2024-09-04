@@ -52,7 +52,7 @@ function Preview({ setUsername, t }) {
   };
   const handleCopy = () => {
     navigator.clipboard
-      .writeText(`https://taqdim.uz/${username}`)
+      .writeText(`https://taqdim.uz/#/${username}`)
       .then(() => {
         toast.success(t.userpreviewcopy);
       })
@@ -198,7 +198,7 @@ function Preview({ setUsername, t }) {
         <div className="flex h-10 pr-0 border-2 border-[#dedeff] rounded-3xl items-center justify-between w-96 p-4">
           <span className="text-gray-700">
             <a
-              href={`https://taqdim.uz/${username}`}
+              href={`https://taqdim.uz/#/${username}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 overflow-hidden"

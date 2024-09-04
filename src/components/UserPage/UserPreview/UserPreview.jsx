@@ -25,6 +25,7 @@ import { BsYoutube, BsFillTelephoneForwardFill } from "react-icons/bs";
 import { FaMapMarkedAlt, FaCopy } from "react-icons/fa"; // FaMapMarkedAlt ham Fa dan
 import { FaThreads } from "react-icons/fa6"; // FaThreads ham Fa dan
 import toast from "react-hot-toast";
+import SpecialUserPreview from "../../SpecialUserPreview/SpecialUserPreview";
 
 function UserPreview({ setUsername, t }) {
   const { username } = useParams();
@@ -40,7 +41,7 @@ function UserPreview({ setUsername, t }) {
   };
   const handleCopy = () => {
     navigator.clipboard
-      .writeText(`https://taqdim.uz/${username}`)
+      .writeText(`https://taqdim.uz/#/${username}`)
       .then(() => {
         toast.success(t.userpreviewcopy);
       })
@@ -104,6 +105,7 @@ function UserPreview({ setUsername, t }) {
   if (authError) {
     return <div className="text-center text-xl text-red-500">{authError}</div>;
   }
+  // const isSpecialUser = username === "abbrorbekk"; // Alohida foydalanuvchi uchun shart
 
   return (
     <div className="p-5 max-w-4xl mx-auto rounded-lg mt-5">
@@ -139,7 +141,7 @@ function UserPreview({ setUsername, t }) {
         <div className="flex h-10 pr-0 border-2 border-[#dedeff] rounded-3xl items-center justify-between w-96 p-4">
           <span className="text-gray-700 block">
             <a
-              href={`https://taqdim.uz/${username}`}
+              href={`https://taqdim.uz/#/${username}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 overflow-hidden"

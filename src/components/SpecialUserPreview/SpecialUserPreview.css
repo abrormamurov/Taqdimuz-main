@@ -1,0 +1,10 @@
+/* SpecialUserPreview.css */
+
+.social-link {
+  background-image: linear-gradient(
+    135deg,
+    #2b2427,
+    #ff8c00
+  ); /* Gradient ranglarni o'zgartiring */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
