@@ -1,5 +1,11 @@
 import React from "react";
-import { Routes, Route, HashRouter, BrowserRouter } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  HashRouter,
+  BrowserRouter,
+  matchRoutes,
+} from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Navbar/Navbar";
 import Edit from "./pages/Edit/Edit";
@@ -72,7 +78,7 @@ function App() {
                   />
                   <Routes>
                     <Route
-                      path="/*/preview/:username"
+                      path="/preview/:username"
                       element={<Preview setUsername={setUsername} t={t} />}
                     />
                     <Route
