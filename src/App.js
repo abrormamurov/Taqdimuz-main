@@ -82,7 +82,7 @@ function App() {
                       element={<Preview setUsername={setUsername} t={t} />}
                     />
                     <Route
-                      path="/*/edit/:username"
+                      path="/edit/:username"
                       element={<Edit setUsername={setUsername} t={t} />}
                     />
                   </Routes>
