@@ -52,7 +52,7 @@ const Login = ({ t }) => {
       if (Array.isArray(accounts) && accounts.length > 0) {
         toast.success(t.toastcomplate1);
 
-        navigate(`/preview/${accounts[0].username}`);
+        navigate(`/*/preview/${accounts[0].username}`);
       } else {
         navigate("/create");
       }
