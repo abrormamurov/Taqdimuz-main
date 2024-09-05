@@ -132,10 +132,12 @@ function Edit({ t, setUsername }) {
       // Yangi rasm yuklanganda preview yarating
       setImagePreview(URL.createObjectURL(file));
       // FormData ga yangi rasmni saqlang yoki serverga yuboring
-      setFormData((prevState) => ({
-        ...prevState,
-        profile_image: file, // Bu yerda faylni saqlang yoki serverga yuboring
-      }));
+      setFormData((prevData) => {
+        return {
+          ...prevData,
+          profile_image: file,
+        };
+      });
     }
   };
 
@@ -229,7 +231,8 @@ function Edit({ t, setUsername }) {
         formDataToSend.append(key, formDataWithoutQrCode[key]);
       }
 
-      if (profile_image) {
+      // Only append profile_image if it is provided and has changed
+      if (profile_image && profile_image !== formData.profile_image) {
         formDataToSend.append("profile_image", profile_image);
       }
 
