@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Navbar/Navbar";
 import Edit from "./pages/Edit/Edit";
@@ -13,28 +13,25 @@ import UserPreview from "./components/UserPage/UserPreview/UserPreview";
 import { translations } from "./components/Translation/Translations";
 import { Toaster } from "react-hot-toast";
 import ResetPassword from "./auth/ResetPassword/ResetPassword";
-import { getAccessToken } from "./service/tokenService";
 
 function App() {
-  const navigate = useNavigate();
-  const [sidebarOpen, setSidebarOpen] = useState(() => {
+  const [sidebarOpen, setSidebarOpen] = React.useState(() => {
     const savedSidebarOpen = localStorage.getItem("sidebarOpen");
     return savedSidebarOpen !== null ? JSON.parse(savedSidebarOpen) : true;
   });
 
-  const [username, setUsername] = useState(
+  const [username, setUsername] = React.useState(
     localStorage.getItem("username") || ""
   );
-  const [token, setToken] = useState(getAccessToken());
-  const [language, setLanguage] = useState("uz");
+  const [language, setLanguage] = React.useState("uz");
 
-  useEffect(() => {
+  React.useEffect(() => {
     localStorage.setItem("sidebarOpen", JSON.stringify(sidebarOpen));
   }, [sidebarOpen]);
 
   const handleOpen = () => setSidebarOpen((prevState) => !prevState);
 
-  useEffect(() => {
+  React.useEffect(() => {
     document.body.classList.add("light-mode");
   }, []);
 
@@ -66,12 +63,11 @@ function App() {
                 <Navbar
                   handleOpen={handleOpen}
                   username={username}
-                  setUsername={setUsername} // Bu yerda setUsername funksiyasini to'g'ri uzatdingiz
+                  setUsername={setUsername}
                   t={t}
                   language={language}
                   setLanguage={setLanguage}
                 />
-
                 <Routes>
                   <Route path="/" element={<Preview t={t} />} />
                   <Route
@@ -82,7 +78,6 @@ function App() {
                     path="/edit/:username"
                     element={<Edit setUsername={setUsername} t={t} />}
                   />
-                  <Route path="/myaccount" element={<MyAccount t={t} />} />
                 </Routes>
               </div>
             </div>

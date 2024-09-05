@@ -6,18 +6,20 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { ToastContainer } from "react-toastify";
-import { HashRouter as BrowserRouter } from "react-router-dom"; // Import BrowserRouter
+import { BrowserRouter, HashRouter } from "react-router-dom";
+
+// Dinamik router tanlash uchun flag
+const useHashRouter = false; // Agar true bo'lsa, HashRouter ishlatiladi, aks holda BrowserRouter ishlatiladi
+const RouterComponent = useHashRouter ? HashRouter : BrowserRouter;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        {" "}
-        {/* App ni BrowserRouter bilan o'rash */}
+      <RouterComponent>
         <App />
         <ToastContainer />
-      </BrowserRouter>
+      </RouterComponent>
     </Provider>
   </React.StrictMode>
 );
