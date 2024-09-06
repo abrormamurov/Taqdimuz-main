@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Routes,
-  Route,
-  HashRouter,
-  BrowserRouter,
-  matchRoutes,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Navbar from "./components/Navbar/Navbar";
 import Edit from "./pages/Edit/Edit";
@@ -18,6 +12,7 @@ import UserPreview from "./components/UserPage/UserPreview/UserPreview";
 import { translations } from "./components/Translation/Translations";
 import { Toaster } from "react-hot-toast";
 import ResetPassword from "./auth/ResetPassword/ResetPassword";
+import AuthProvider from "./AuthProvider"; // import AuthProvider
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = React.useState(() => {
@@ -44,54 +39,56 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
-        <Toaster />
-        <Routes>
-          <Route path="/login" element={<Login t={t} />} />
-          <Route path="/signup" element={<Signup t={t} />} />
-          <Route path="/reset-password" element={<ResetPassword t={t} />} />
-          <Route
-            path="/"
-            element={
-              <Home t={t} language={language} setLanguage={setLanguage} />
-            }
-          />
-          <Route path="/create" element={<Create t={t} />} />
-          <Route path="/:username" element={<UserPreview t={t} />} />
-          <Route
-            path="*"
-            element={
-              <div id="main-content">
-                <Sidebar
-                  sidebarOpen={sidebarOpen}
-                  setUsername={setUsername}
-                  t={t}
-                />
-                <div id="content">
-                  <Navbar
-                    handleOpen={handleOpen}
-                    username={username}
+      <AuthProvider>
+        <div className="App">
+          <Toaster />
+          <Routes>
+            <Route path="/login" element={<Login t={t} />} />
+            <Route path="/signup" element={<Signup t={t} />} />
+            <Route path="/reset-password" element={<ResetPassword t={t} />} />
+            <Route
+              path="/"
+              element={
+                <Home t={t} language={language} setLanguage={setLanguage} />
+              }
+            />
+            <Route path="/create" element={<Create t={t} />} />
+            <Route path="/:username" element={<UserPreview t={t} />} />
+            <Route
+              path="*"
+              element={
+                <div id="main-content">
+                  <Sidebar
+                    sidebarOpen={sidebarOpen}
                     setUsername={setUsername}
                     t={t}
-                    language={language}
-                    setLanguage={setLanguage}
                   />
-                  <Routes>
-                    <Route
-                      path="/preview/:username"
-                      element={<Preview setUsername={setUsername} t={t} />}
+                  <div id="content">
+                    <Navbar
+                      handleOpen={handleOpen}
+                      username={username}
+                      setUsername={setUsername}
+                      t={t}
+                      language={language}
+                      setLanguage={setLanguage}
                     />
-                    <Route
-                      path="/edit/:username"
-                      element={<Edit setUsername={setUsername} t={t} />}
-                    />
-                  </Routes>
+                    <Routes>
+                      <Route
+                        path="/preview/:username"
+                        element={<Preview setUsername={setUsername} t={t} />}
+                      />
+                      <Route
+                        path="/edit/:username"
+                        element={<Edit setUsername={setUsername} t={t} />}
+                      />
+                    </Routes>
+                  </div>
                 </div>
-              </div>
-            }
-          />
-        </Routes>
-      </div>
+              }
+            />
+          </Routes>
+        </div>
+      </AuthProvider>
     </BrowserRouter>
   );
 }
