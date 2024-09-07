@@ -102,7 +102,7 @@ const iconMap = {
   YusroTour: {
     icon: (
       <img
-        src={`${process.env.PUBLIC_URL}/yusro1.svg`} // Yusro uchun rasm
+        src="/yusro1.svg"
         alt="Yusro Tour"
         style={{ width: 24, height: 24, color: "#149c54" }} // Ikona o'lchamini sozlash
       />
