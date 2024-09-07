@@ -19,7 +19,7 @@ import {
 } from "react-icons/fa";
 import { SiGooglemaps } from "react-icons/si";
 import { FaThreads, FaViber, FaXTwitter } from "react-icons/fa6";
-import yusroLogo from "../../assets/Yusro1.svg";
+import { ReactComponent as YusroLogo } from "../../assets/Yusro1.svg";
 
 import "./IconSelector.css";
 
@@ -101,13 +101,7 @@ const iconMap = {
     label: "Viber",
   },
   YusroTour: {
-    icon: (
-      <img
-        src={yusroLogo}
-        alt="Yusro Tour"
-        style={{ width: 24, height: 24, color: "#149c54" }} // Ikona o'lchamini sozlash
-      />
-    ),
+    icon: <YusroLogo style={{ width: 24, height: 24, fill: "#149c54" }} />,
     label: "Yusro Tour",
   },
 };

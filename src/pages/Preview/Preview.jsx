@@ -37,7 +37,7 @@ import { BsYoutube, BsFillTelephoneForwardFill } from "react-icons/bs";
 import { FaMapMarkedAlt, FaCopy } from "react-icons/fa"; // FaMapMarkedAlt ham Fa dan
 import { FaThreads, FaXTwitter } from "react-icons/fa6"; // FaThreads ham Fa dan
 import toast from "react-hot-toast";
-import yusroLogo from "../../assets/Yusro.svg";
+import { ReactComponent as YusroLogo } from "../../assets/Yusro.svg";
 
 function Preview({ setUsername, t }) {
   const { username } = useParams();
@@ -241,13 +241,7 @@ function Preview({ setUsername, t }) {
                 break;
 
               case "YusroTour":
-                Icon = () => (
-                  <img
-                    src={yusroLogo}
-                    alt="Yusro Tour"
-                    className="w-6 h-6 mr-3"
-                  />
-                );
+                Icon = () => <YusroLogo className="w-6 h-6 mr-3" />;
                 backgroundColor = "";
                 break;
               case "Telegram":
