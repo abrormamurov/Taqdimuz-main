@@ -242,7 +242,7 @@ function Preview({ setUsername, t }) {
               case "YusroTour":
                 Icon = () => (
                   <img
-                    src="/yusro.svg"
+                    src={`${process.env.PUBLIC_URL}/yusro.svg`}
                     alt="Yusro Tour"
                     className="w-6 h-6 mr-3"
                   />
