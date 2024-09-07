@@ -131,13 +131,13 @@ function Edit({ t, setUsername }) {
     if (file) {
       // Yangi rasm yuklanganda preview yarating
       setImagePreview(URL.createObjectURL(file));
-      // FormData ga yangi rasmni saqlang yoki serverga yuboring
-      setFormData((prevData) => {
-        return {
-          ...prevData,
-          profile_image: file,
-        };
-      });
+
+      // Foydalanuvchi yangi rasm yuklaganda formData yangilang
+      setFormData((prevData) => ({
+        ...prevData,
+        profile_image: file,
+        isImageUpdated: true, // Yangi bayroq qo'shamiz
+      }));
     }
   };
 
@@ -194,7 +194,7 @@ function Edit({ t, setUsername }) {
 
   const getIconType = (url) => {
     if (url.match(/instagram/)) return "Instagram";
-    if (url.match(/twitter/)) return "Twitter";
+    if (url.match(/x.com/)) return "X";
     if (url.match(/t.me/)) return "Telegram";
     if (url.match(/whatsapp/)) return "Whatsapp";
     if (url.match(/facebook/)) return "Facebook";
@@ -212,6 +212,7 @@ function Edit({ t, setUsername }) {
     if (url.match(/threads/)) return "Threads";
     if (url.match(/viber/)) return "Viber";
     if (url.match(/github/)) return "GitHub";
+    if (url.match(/yusrotur.uz/)) return "YusroTour";
 
     return "";
   };
@@ -222,8 +223,13 @@ function Edit({ t, setUsername }) {
     setError(null);
 
     try {
-      const { qr_code, profile_image, pdf, ...formDataWithoutQrCode } =
-        formData;
+      const {
+        qr_code,
+        profile_image,
+        pdf,
+        isImageUpdated,
+        ...formDataWithoutQrCode
+      } = formData;
 
       // Construct FormData
       const formDataToSend = new FormData();
@@ -231,17 +237,17 @@ function Edit({ t, setUsername }) {
         formDataToSend.append(key, formDataWithoutQrCode[key]);
       }
 
-      // Only append profile_image if it is provided and has changed
-      if (profile_image && profile_image !== formData.profile_image) {
+      // Faqat foydalanuvchi yangi rasm yuklagan bo'lsa, uni yuboring
+      if (isImageUpdated) {
         formDataToSend.append("profile_image", profile_image);
       }
 
-      // Only append PDF if it is provided and is below the size limit
+      // Faqat PDF faylni yuboring, agar o'lcham mos bo'lsa
       if (pdf && pdf.size <= 20 * 1024 * 1024) {
         formDataToSend.append("pdf", pdf);
       }
 
-      // Add URLs as JSON string
+      // URL'larni JSON string sifatida yuboring
       formDataToSend.append(
         "sites",
         JSON.stringify(
@@ -253,7 +259,7 @@ function Edit({ t, setUsername }) {
         )
       );
 
-      // Send request
+      // Yangi ma'lumotlarni serverga yuborish
       const response = await Profile.updateProfile(formDataToSend, username);
 
       if (response) {

@@ -18,29 +18,29 @@ import {
   FaDropbox,
 } from "react-icons/fa";
 import { SiGooglemaps } from "react-icons/si";
-import { FaThreads, FaViber } from "react-icons/fa6";
+import { FaThreads, FaViber, FaXTwitter } from "react-icons/fa6";
 
 import "./IconSelector.css";
 
 const iconMap = {
   Instagram: {
-    icon: <FaInstagram size={24} color="#000" />,
+    icon: <FaInstagram size={24} color="#E1306C" />,
     label: "Instagram",
   },
-  Twitter: {
-    icon: <FaTwitter size={24} color="#000" />,
-    label: "Twitter",
+  X: {
+    icon: <FaXTwitter size={24} color="#000" />,
+    label: "X",
   },
   Telegram: {
-    icon: <FaTelegramPlane size={24} color="#000" />,
+    icon: <FaTelegramPlane size={24} color="blue" />,
     label: "Telegram",
   },
   Whatsapp: {
-    icon: <FaWhatsapp size={24} color="#000" />,
+    icon: <FaWhatsapp size={24} color="green" />,
     label: "WhatsApp",
   },
   Facebook: {
-    icon: <FaFacebookF size={24} color="#000" />,
+    icon: <FaFacebookF size={24} color="blue" />,
     label: "Facebook",
   },
   Web: {
@@ -48,7 +48,7 @@ const iconMap = {
     label: "Website",
   },
   YouTube: {
-    icon: <BsYoutube size={24} color="#000" />,
+    icon: <BsYoutube size={24} color="red" />,
     label: "YouTube",
   },
   PhoneNumber: {
@@ -56,7 +56,7 @@ const iconMap = {
     label: "PhoneNumber",
   },
   GitHub: {
-    icon: <FaGithub size={24} color="#000" />,
+    icon: <FaGithub size={24} color="grey" />,
     label: "GitHub",
   },
   LinkedIn: {
@@ -99,13 +99,23 @@ const iconMap = {
     icon: <FaViber size={24} color="#000" />,
     label: "Viber",
   },
+  YusroTour: {
+    icon: (
+      <img
+        src={`${process.env.PUBLIC_URL}/yusro1.svg`} // Yusro uchun rasm
+        alt="Yusro Tour"
+        style={{ width: 24, height: 24, color: "#149c54" }} // Ikona o'lchamini sozlash
+      />
+    ),
+    label: "Yusro Tour",
+  },
 };
 
 const IconSelector = ({ type }) => {
   const iconInfo = iconMap[type] || { icon: null, label: "" };
 
   return (
-    <div className="icon-selector">
+    <div className="icon-selector ">
       {iconInfo.icon && <div className="icon-display">{iconInfo.icon}</div>}
       {iconInfo.label && <div className="icon-label">{iconInfo.label}</div>}
     </div>

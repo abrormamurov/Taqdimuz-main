@@ -35,7 +35,7 @@ import {
 } from "react-icons/fa";
 import { BsYoutube, BsFillTelephoneForwardFill } from "react-icons/bs";
 import { FaMapMarkedAlt, FaCopy } from "react-icons/fa"; // FaMapMarkedAlt ham Fa dan
-import { FaThreads } from "react-icons/fa6"; // FaThreads ham Fa dan
+import { FaThreads, FaXTwitter } from "react-icons/fa6"; // FaThreads ham Fa dan
 import toast from "react-hot-toast";
 
 function Preview({ setUsername, t }) {
@@ -234,9 +234,20 @@ function Preview({ setUsername, t }) {
                 Icon = FaInstagram;
                 backgroundColor = "bg-pink-600";
                 break;
-              case "Twitter":
-                Icon = FaTwitter;
-                backgroundColor = "bg-blue-400";
+              case "X":
+                Icon = FaXTwitter; // FaXTwitter o'rniga
+                backgroundColor = "bg-black"; // 'blue' o'rniga Tailwind class
+                break;
+
+              case "YusroTour":
+                Icon = () => (
+                  <img
+                    src={`${process.env.PUBLIC_URL}/yusro.svg`}
+                    alt="Yusro Tour"
+                    className="w-6 h-6 mr-3"
+                  />
+                );
+                backgroundColor = "";
                 break;
               case "Telegram":
                 Icon = FaTelegramPlane;
@@ -318,8 +329,13 @@ function Preview({ setUsername, t }) {
                 href={site.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center p-3 rounded-lg ${backgroundColor} text-white`}
+                className={`flex items-center  p-3 rounded-lg ${backgroundColor} text-white`}
                 key={index}
+                style={
+                  site.icon === "YusroTour"
+                    ? { backgroundColor: "#149C54" }
+                    : {}
+                } // Faqat Yusro uchun rangni inline-styling bilan o'rnatish
               >
                 <Icon className="text-xl mr-3" />
                 {site.name ? (
