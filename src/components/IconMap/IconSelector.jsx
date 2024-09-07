@@ -19,6 +19,7 @@ import {
 } from "react-icons/fa";
 import { SiGooglemaps } from "react-icons/si";
 import { FaThreads, FaViber, FaXTwitter } from "react-icons/fa6";
+import yusroLogo from "../../assets/Yusro1.svg";
 
 import "./IconSelector.css";
 
@@ -102,7 +103,7 @@ const iconMap = {
   YusroTour: {
     icon: (
       <img
-        src={`${process.env.PUBLIC_URL}/yusro1.svg`}
+        src={yusroLogo}
         alt="Yusro Tour"
         style={{ width: 24, height: 24, color: "#149c54" }} // Ikona o'lchamini sozlash
       />
